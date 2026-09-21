@@ -19,7 +19,7 @@ The header shows the current chapter (for example `02 · PROVE`) and flips to da
 - **Colours** come from the logo: petrol blue `#045475`, signal red `#F11123`, on warm paper `#F4F2EE`,
   with deep navy `#061722` for the dark chapters. Tokens live in `src/app/globals.css`.
 - **Red is the first point**: use it once per view (a dot, a live indicator, the full stop on a headline).
-- **Type**: Sora for headlines, Geist for text, Geist Mono for the small uppercase "telemetry" labels.
+- **Type**: Plus Jakarta Sans for headlines, Geist for text, Geist Mono for the small uppercase "telemetry" labels.
 - **Logo**: the hex mark is rebuilt as SVG in `src/components/brand/Mark.tsx`; the wordmark PNGs in
   `public/brand/` are cut from the supplied logo file.
 

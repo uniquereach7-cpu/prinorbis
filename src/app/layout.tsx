@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Sora } from "next/font/google";
+import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { ChapterProvider } from "@/components/layout/ChapterProvider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -7,8 +7,8 @@ import { TrajectoryRail } from "@/components/layout/TrajectoryRail";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const sora = Sora({
-  variable: "--font-sora",
+const display = Plus_Jakarta_Sans({
+  variable: "--font-display-face",
   subsets: ["latin"],
 });
 
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sora.variable} ${geist.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${display.variable} ${geist.variable} ${geistMono.variable}`}>
       <body className="min-h-dvh">
         <a
           href="#main"
