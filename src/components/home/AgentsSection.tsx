@@ -52,7 +52,7 @@ export function AgentsSection() {
                   {cfo.status}
                 </StatusPill>
               </div>
-              <h3 className="display-l relative mt-8 text-[clamp(2rem,3.6vw,3rem)]">{cfo.name}</h3>
+              <h3 className="display-l relative mt-8">{cfo.name}</h3>
               <p className="relative mt-4 max-w-lg text-paper/70">{cfo.body}</p>
 
               <ul className="relative mt-8 grid gap-2.5 sm:grid-cols-2">

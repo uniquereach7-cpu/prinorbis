@@ -23,7 +23,7 @@ export default function ContactPage() {
             <span className="size-1.5 rounded-full bg-red" aria-hidden />
             Contact · Mission brief
           </p>
-          <h1 className="display-xl rise mt-4 text-[clamp(2.75rem,6vw,5rem)] text-ink [animation-delay:100ms]">
+          <h1 className="display-xl rise mt-4 text-ink [animation-delay:100ms]">
             Plot your first point.
           </h1>
           <p className="lead rise mt-7 max-w-md text-ink-muted [animation-delay:180ms]">

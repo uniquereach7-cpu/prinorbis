@@ -49,7 +49,7 @@ export default function ServicesPage() {
                     >
                       <span>
                         <span className="telemetry block text-ink-muted">{s.code}</span>
-                        <span className="mt-1 block font-display text-[15px] font-bold">{s.name}</span>
+                        <span className="mt-1 block font-display text-[15px] font-semibold tracking-tight">{s.name}</span>
                       </span>
                       <span className="size-1.5 rounded-full bg-ink/20 transition-colors group-hover:bg-red" />
                     </Link>

@@ -43,7 +43,9 @@ export function Stall() {
                 transition={{ duration: 0.5, delay: 0.35 + struck.length * 0.35 + 0.1 }}
               >
                 <span className="w-10 border-t-2 border-dashed border-blue/50 md:w-16" aria-hidden />
-                Production<span className="-ml-3 text-red md:-ml-4">.</span>
+                <span>
+                  Production<span className="text-red">.</span>
+                </span>
               </motion.span>
             </motion.div>
 

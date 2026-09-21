@@ -173,7 +173,7 @@ export function Header() {
                     className="flex items-baseline gap-4 border-b border-paper/10 py-4"
                   >
                     <span className="telemetry text-paper/40">0{i}</span>
-                    <span className="font-display text-2xl font-bold tracking-tight">{item.label}</span>
+                    <span className="font-display text-2xl font-semibold tracking-[-0.03em]">{item.label}</span>
                     {pathname === item.href && <span className="size-2 self-center rounded-full bg-red" />}
                   </Link>
                 </motion.div>

@@ -72,10 +72,10 @@ export default function AgenticCfoPage() {
               <StatusPill live>Coming soon · early access open</StatusPill>
             </div>
             <p className="eyebrow rise mt-8 text-ink-muted [animation-delay:80ms]">Orbis Agents · Agent.CFO</p>
-            <h1 className="display-xl rise mt-4 text-[clamp(3rem,7vw,5.75rem)] text-ink [animation-delay:140ms]">
+            <h1 className="display-xl rise mt-4 text-ink [animation-delay:140ms]">
               Agentic CFO<span className="text-red">.</span>
             </h1>
-            <p className="headline rise mt-6 max-w-lg text-[clamp(1.2rem,1.8vw,1.55rem)] text-blue [animation-delay:200ms]">
+            <p className="headline rise mt-6 max-w-lg text-blue [animation-delay:200ms]">
               The finance back office, run by agents. Approved by your team.
             </p>
             <p className="lead rise mt-6 max-w-xl text-ink-muted [animation-delay:260ms]">

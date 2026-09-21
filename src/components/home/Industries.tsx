@@ -116,7 +116,7 @@ export function Industries() {
                     }`}
                   >
                     <span className="telemetry w-6 text-paper/40">{ind.code}</span>
-                    <span className="font-display text-[clamp(1.05rem,1.8vw,1.4rem)] font-bold tracking-tight">
+                    <span className="font-display text-[clamp(1.05rem,1.6vw,1.3rem)] font-semibold tracking-[-0.02em]">
                       {ind.name}
                     </span>
                     <span

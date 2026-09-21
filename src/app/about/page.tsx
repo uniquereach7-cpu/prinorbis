@@ -124,7 +124,7 @@ export default function AboutPage() {
                 <Reveal key={i} delay={i * 0.06}>
                   <article className="flex h-full flex-col rounded-[var(--radius-lg)] border border-dashed border-paper/20 p-6">
                     <div className="flex aspect-square w-full items-center justify-center rounded-[var(--radius-md)] bg-night-raised">
-                      <span className="font-display text-3xl font-bold text-paper/30">{m.initials}</span>
+                      <span className="font-display text-3xl font-semibold text-paper/30">{m.initials}</span>
                     </div>
                     <h3 className="title mt-5">{m.name}</h3>
                     <p className="telemetry mt-2 text-steel">{m.role}</p>
