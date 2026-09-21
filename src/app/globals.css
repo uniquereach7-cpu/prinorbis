@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/*
+ * Prinorbis design tokens.
+ * Palette is taken from the logo: petrol blue (#045475) and signal red (#F11123),
+ * set on a warm paper ground with deep navy slabs for the darker chapters.
+ * Rough proportions per view: paper 60%, navy 25%, steel 10%, red 5%.
+ */
+@theme {
+  --color-paper: #f4f2ee;
+  --color-paper-raised: #fbfaf7;
+  --color-mist: #e6ebee;
+  --color-steel: #9bb6c6;
+  --color-steel-deep: #5d7f93;
+  --color-blue: #045475;
+  --color-blue-bright: #1f7aa3;
+  --color-blue-deep: #06354b;
+  --color-night: #061722;
+  --color-night-raised: #0c2433;
+  --color-red: #f11123;
+  --color-red-ink: #c20d1c;
+  --color-red-glow: #ff4454;
+  --color-ink: #0a1d29;
+  --color-ink-muted: #4d5e69;
+  --color-line: #dcd8cf;
+  --color-line-strong: #7b8a93;
+  --color-grey: #8d8d8c;
+
+  --radius-md: 10px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --font-display: var(--font-unbounded), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-geist), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, Menlo, Consolas, monospace;
+}
+
+/* ---------- Type scale ---------- */
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.25rem, 9vw, 7rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+}
+
+@utility display-l {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 4.6vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+@utility headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+@utility title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+@utility lead {
+  font-size: clamp(1.075rem, 1.4vw, 1.25rem);
+  line-height: 1.6;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@utility telemetry {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ---------- Grounds ---------- */
+
+@utility dot-grid {
+  background-image: radial-gradient(circle, var(--dot, #d3cec3) 1.1px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  @media (width >= 48rem) {
+    padding-inline: 40px;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 64px;
+  }
+}
+
+/* ---------- Base ---------- */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  background: var(--color-night);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-blue);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.on-dark :focus-visible {
+  outline-color: var(--color-paper);
+}
+
+/* ---------- Motion ---------- */
+
+@keyframes pulse-point {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.rise {
+  animation: rise 0.8s var(--ease-out-soft) both;
+}
+
+.dash-flow {
+  animation: dash-flow 1.2s linear infinite;
+}
+
+.pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-point 2.4s var(--ease-out-soft) infinite;
+}
+
+.blink {
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+.spin-slow {
+  transform-box: view-box;
+  transform-origin: center;
+  animation: spin-slow 60s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .pulse-ring,
+  .blink,
+  .spin-slow,
+  .rise,
+  .dash-flow {
+    animation: none;
+  }
+}
