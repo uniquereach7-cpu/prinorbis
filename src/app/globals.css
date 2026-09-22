@@ -1,40 +1,40 @@
 @import "tailwindcss";
 
 /*
- * Prinorbis design tokens.
- * Palette is taken from the logo: petrol blue (#045475) and signal red (#F11123),
- * set on a warm paper ground with deep navy slabs for the darker chapters.
- * Rough proportions per view: paper 60%, navy 25%, steel 10%, red 5%.
+ * Prinorbis · Living systems.
+ * Forest and bone carry the brand, sage supports, and the first point
+ * brings the heat: signal lime on forest, flare on bone.
+ * Rough proportions per view: bone 60%, forest 25%, sage 10%, point 5%.
  */
 @theme {
-  --color-paper: #f4f2ee;
-  --color-paper-raised: #fbfaf7;
-  --color-mist: #e6ebee;
-  --color-steel: #9bb6c6;
-  --color-steel-deep: #5d7f93;
-  --color-blue: #045475;
-  --color-blue-bright: #1f7aa3;
-  --color-blue-deep: #06354b;
-  --color-night: #061722;
-  --color-night-raised: #0c2433;
-  --color-red: #f11123;
-  --color-red-ink: #c20d1c;
-  --color-red-glow: #ff4454;
-  --color-ink: #0a1d29;
-  --color-ink-muted: #4d5e69;
-  --color-line: #dcd8cf;
-  --color-line-strong: #7b8a93;
-  --color-grey: #8d8d8c;
+  --color-night: #0b2219;
+  --color-night-raised: #10301f;
+  --color-forest: #16432f;
+  --color-emerald: #1e5c41;
+  --color-moss: #2a4a3e;
+  --color-sage: #8fae96;
+  --color-sage-soft: #c9d8c8;
+  --color-mist: #e6ebdf;
+  --color-bone: #f4efe4;
+  --color-bone-raised: #fbf8f2;
+  --color-lime: #c8f03c;
+  --color-flare: #e0572b;
+  --color-flare-ink: #b8401a;
+  --color-ink: #0b2219;
+  --color-ink-muted: #4b5e53;
+  --color-fog: #a7b8ac;
+  --color-line: #d6cdb8;
 
   --radius-md: 10px;
   --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-xl: 32px;
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
-  --font-display: var(--font-display-face), "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-bricolage), "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
   --font-sans: var(--font-geist), "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, Menlo, Consolas, monospace;
 }
@@ -44,45 +44,53 @@
 @utility display-xl {
   font-family: var(--font-display);
   font-variant-ligatures: no-common-ligatures;
-  font-kerning: normal;
-  font-weight: 700;
-  font-size: clamp(2.9rem, 6.6vw, 6rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+  font-weight: 650;
+  font-size: clamp(3.25rem, 8.4vw, 8.25rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-variation-settings: "opsz" 96;
 }
 
 @utility display-l {
   font-family: var(--font-display);
   font-variant-ligatures: no-common-ligatures;
-  font-kerning: normal;
-  font-weight: 700;
-  font-size: clamp(2rem, 3.8vw, 3.25rem);
-  line-height: 1.08;
-  letter-spacing: -0.025em;
+  font-weight: 650;
+  font-size: clamp(2.3rem, 4.8vw, 4.25rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 96;
 }
 
 @utility headline {
   font-family: var(--font-display);
   font-variant-ligatures: no-common-ligatures;
-  font-kerning: normal;
-  font-weight: 700;
-  font-size: clamp(1.35rem, 2vw, 1.75rem);
-  line-height: 1.2;
+  font-weight: 600;
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  line-height: 1.12;
   letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 48;
 }
 
 @utility title {
   font-family: var(--font-display);
   font-variant-ligatures: no-common-ligatures;
-  font-kerning: normal;
-  font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 1.35;
-  letter-spacing: -0.015em;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 24;
+}
+
+/* The accent voice: an italic serif for the one word that matters. */
+@utility serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 @utility lead {
-  font-size: clamp(1.075rem, 1.4vw, 1.25rem);
+  font-size: clamp(1.075rem, 1.35vw, 1.25rem);
   line-height: 1.6;
 }
 
@@ -91,7 +99,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -100,40 +108,36 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 14px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-/* ---------- Grounds ---------- */
-
-@utility dot-grid {
-  background-image: radial-gradient(circle, var(--dot, #d3cec3) 1.1px, transparent 1.5px);
-  background-size: 24px 24px;
 }
 
 @utility container-site {
   width: 100%;
-  max-width: 1320px;
+  max-width: 1360px;
   margin-inline: auto;
   padding-inline: 20px;
   @media (width >= 48rem) {
     padding-inline: 40px;
   }
   @media (width >= 80rem) {
-    padding-inline: 64px;
+    padding-inline: 72px;
   }
+}
+
+@utility dot-field {
+  background-image: radial-gradient(circle, var(--dot, rgba(143, 174, 150, 0.35)) 1px, transparent 1.4px);
+  background-size: 28px 28px;
 }
 
 /* ---------- Base ---------- */
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 88px;
   background: var(--color-night);
 }
 
 body {
-  background: var(--color-paper);
+  background: var(--color-bone);
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -141,43 +145,88 @@ body {
 }
 
 ::selection {
-  background: var(--color-blue);
-  color: var(--color-paper);
+  background: var(--color-lime);
+  color: var(--color-night);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-blue);
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline: 2px solid var(--color-forest);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 .on-dark :focus-visible {
-  outline-color: var(--color-paper);
+  outline-color: var(--color-lime);
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* SplitText line masks need a little room for descenders. */
+.split-line {
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+/* Film grain over everything: quiet, but it takes the digital edge off. */
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: grain 1.2s steps(6) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
 }
 
 /* ---------- Motion ---------- */
 
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
 @keyframes pulse-point {
   0% {
     transform: scale(1);
-    opacity: 0.55;
+    opacity: 0.6;
   }
   70%,
   100% {
-    transform: scale(2.6);
+    transform: scale(2.8);
     opacity: 0;
   }
 }
 
 @keyframes blink {
   50% {
-    opacity: 0.25;
+    opacity: 0.2;
   }
 }
 
-@keyframes spin-slow {
-  to {
-    transform: rotate(360deg);
+@keyframes breathe {
+  50% {
+    transform: scale(1.04);
   }
 }
 
@@ -187,52 +236,69 @@ body {
   }
 }
 
-@keyframes rise {
+.rise {
+  animation: rise 1s var(--ease-out-soft) both;
+}
+
+/* Page curtain (see app/template.tsx). */
+@keyframes curtain-lift {
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes curtain-line {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes curtain-fade {
+  to {
+    opacity: 0;
+  }
+}
+/* Opacity only: a transform here would break pinned sections and fixed children. */
+@keyframes page-in {
   from {
     opacity: 0;
-    transform: translateY(16px);
   }
 }
-
-@keyframes dash-flow {
-  to {
-    stroke-dashoffset: -20;
-  }
+.curtain {
+  animation: curtain-lift 0.75s cubic-bezier(0.77, 0, 0.18, 1) 0.45s forwards;
 }
-
-.rise {
-  animation: rise 0.8s var(--ease-out-soft) both;
+.curtain-line {
+  animation:
+    curtain-line 0.45s cubic-bezier(0.22, 1, 0.36, 1) both,
+    curtain-fade 0.25s ease 0.5s forwards;
 }
-
-.dash-flow {
-  animation: dash-flow 1.2s linear infinite;
+.page-in {
+  animation: page-in 0.9s var(--ease-out-soft) 0.6s both;
 }
 
 .pulse-ring {
   transform-box: fill-box;
   transform-origin: center;
-  animation: pulse-point 2.4s var(--ease-out-soft) infinite;
+  animation: pulse-point 2.6s var(--ease-out-soft) infinite;
 }
 
 .blink {
-  animation: blink 1.4s ease-in-out infinite;
+  animation: blink 1.3s ease-in-out infinite;
 }
 
-.spin-slow {
-  transform-box: view-box;
-  transform-origin: center;
-  animation: spin-slow 60s linear infinite;
+.marquee {
+  animation: marquee 40s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  .rise,
   .pulse-ring,
   .blink,
-  .spin-slow,
-  .rise,
-  .dash-flow {
+  .marquee,
+  .grain,
+  .page-in,
+  .curtain-line {
     animation: none;
+  }
+  .curtain {
+    display: none;
   }
 }

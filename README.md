@@ -1,7 +1,7 @@
-# Prinorbis Technologies website
+# Prinorbis website · Living systems
 
-Marketing site for Prinorbis: AI strategy and transformation consulting plus the Orbis Agents product line (Agentic CFO first).
-Built with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4 and Motion.
+Marketing site for Prinorbis: AI strategy and transformation consulting plus the Orbis Agents product line
+(Agentic CFO first). Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, GSAP, Lenis and three.js.
 
 ```bash
 npm install
@@ -9,40 +9,48 @@ npm run dev      # http://localhost:3000
 npm run build    # production build
 ```
 
-## Design direction
+## The idea
 
-The site follows the reference design's flow: every visit travels the engagement path
-**Launchpad → Discover → Prove → Launch → Orbit**. As you scroll, the ground deepens from warm paper to steel,
-brand blue and finally navy night, and a dashed trajectory rail on the right carries the red "first point" down the page.
-The header shows the current chapter (for example `02 · PROVE`) and flips to dark over dark sections.
+Intelligence is grown, not built. Every page follows the growth path **Seed → Root → Network → Canopy**
+(Discover, Prove, Launch, Orbit). Forest and bone carry the brand, sage supports, and the first point
+brings the heat: signal lime on forest, flare on bone.
 
-- **Colours** come from the logo: petrol blue `#045475`, signal red `#F11123`, on warm paper `#F4F2EE`,
-  with deep navy `#061722` for the dark chapters. Tokens live in `src/app/globals.css`.
-- **Red is the first point**: use it once per view (a dot, a live indicator, the full stop on a headline).
-- **Type**: Plus Jakarta Sans for headlines, Geist for text, Geist Mono for the small uppercase "telemetry" labels.
-- **Logo**: the hex mark is rebuilt as SVG in `src/components/brand/Mark.tsx`; the wordmark PNGs in
-  `public/brand/` are cut from the supplied logo file.
+- **Colours**: forest night `#0B2219`, forest `#16432F`, sage `#8FAE96`, bone `#F4EFE4`, lime `#C8F03C`,
+  flare `#E0572B`. Tokens live in `src/app/globals.css`.
+- **Type**: Bricolage Grotesque for headlines, Instrument Serif italic for the one accent word, Geist for text,
+  Geist Mono for the uppercase telemetry labels.
+- **Logo**: `src/components/brand/Wordmark.tsx` is a temporary lowercase wordmark with lime i-dots, as in the
+  reference design. The client is redrawing the logo; swap this one component when it lands.
+
+## The living drawings
+
+| Where | What | How |
+|---|---|---|
+| Home hero, Services hero | A root network grows live from a glowing seed, then lime pulses flow to the tips; tips brighten near the cursor | Space colonization on canvas (`living/colony.ts`, `living/GrowthCanvas.tsx`) |
+| Home, the path | Pinned section: one plant grows seed, roots, underground network, canopy as you scroll | GSAP ScrollTrigger + DrawSVG (`home/PathGrowth.tsx`, `living/plant.ts`) |
+| Agents | Cells that breathe, joined by mycelium threads carrying handoff pulses | GSAP MorphSVG + MotionPath (`living/Cell.tsx`, `living/Mycelium.tsx`) |
+| Industries | Growth rings draw outward; each industry sits on a ring | DrawSVG, scrubbed (`living/TreeRings.tsx`) |
+| Agentic CFO | Five agent cells and your team around the ledger | `cfo/CfoColony.tsx` |
+| About | Orbis: a globe with root veins and pulses, turning toward the pointer | three.js, lazy-loaded (`living/Globe.tsx`) |
+| Everywhere | Lenis smooth scroll, masked line reveals, word-by-word scrub text, a root rail that grows down the right edge, film grain, a page curtain between routes | `layout/SmoothScroll.tsx`, `motion/*`, `layout/GrowthRail.tsx`, `app/template.tsx` |
+
+All drawings are seeded, so server and client render the same shapes. Everything respects
+`prefers-reduced-motion`: animations are skipped and each drawing shows its finished state.
 
 ## Pages
 
-| Route | What it is |
-|---|---|
-| `/` | Hero with orbiting agents, the "stall", the four-stage path, Orbis Agents + console, industries, mission brief |
-| `/services` | The path in detail: Discover, Prove, Launch, Orbit with every offering, output and exit |
-| `/agentic-cfo` | Product page: suite of five agents, how it fits, principles, early access list, FAQ |
-| `/about` | The Princeps Orbis story, pillars, team |
-| `/contact` | The mission brief (three questions, suggested stage, contact details) |
+Every header item is its own page: `/services`, `/agents`, `/industries`, `/insights` (+ `/insights/[slug]`),
+`/about`, plus `/agentic-cfo` and `/contact`.
 
 ## Editing content
 
-All copy is in `src/content/site.ts`: stages and services, Orbis Agents, the CFO suite, industries and use cases,
-FAQs and team. Change text there; layouts pick it up automatically.
+All copy is in `src/content/site.ts`: stages, services, agents, the CFO suite, industries, insights, FAQs and team.
 
 ## Before launch
 
+- **Logo**: replace `Wordmark.tsx` with the new logo.
 - **Lead delivery**: `src/app/api/lead/route.ts` only logs submissions. Connect it to email or a CRM.
-- **Team**: the About page shows placeholder partner cards. Add real names, roles, bios and photos in `team`.
-- **Agentic CRO / Agentic Insure**: taken from the reference brand system and marked "In development".
-  Remove them from `orbisAgents` if the client only wants Agentic CFO shown for now.
-- **Industry use cases** are suggested examples; confirm them with the client.
-- Domain, analytics and an Open Graph image.
+- **Insights**: the three field notes are drafts written for review. The client should approve or replace them.
+- **Team**: the About page shows placeholder partner cards.
+- **Agentic CRO / Agentic Insure**: shown as "In development", from the reference design. Remove from `orbisAgents` if not wanted.
+- **Industry use cases** are suggested examples; confirm with the client.

@@ -1,15 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-90 -103 180 204">
-  <defs>
-    <mask id="gap" maskUnits="userSpaceOnUse" x="-90" y="-103" width="180" height="204">
-      <rect x="-90" y="-103" width="180" height="204" fill="white"/>
-      <circle cx="67.6" cy="0" r="25.3" fill="black"/>
-    </mask>
-  </defs>
-  <polygon points="-86.6,-50 0,-100 0,-59 -51.1,-29.5" fill="#045475"/>
-  <polygon points="0,-100 86.6,-50 51.1,-29.5 0,-59" fill="#F11123"/>
-  <polygon points="86.6,-50 86.6,50 51.1,29.5 51.1,-29.5" fill="#045475" mask="url(#gap)"/>
-  <polygon points="86.6,50 5.4,96.9 5.4,55.9 51.1,29.5" fill="#F11123"/>
-  <polygon points="-86.6,-50 -51.1,-29.5 -51.1,27.5 -86.6,44.5" fill="#F11123"/>
-  <polygon points="0,-27.4 23.7,-13.7 23.7,13.7 0,27.4 -23.7,13.7 -23.7,-13.7" fill="#045475"/>
-  <circle cx="67.6" cy="0" r="18.4" fill="#F11123"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0B2219"/>
+  <path d="M20 50V24.5C20 18.7 24.4 14.5 30.4 14.5C36.8 14.5 41.5 19.2 41.5 25.8C41.5 32.4 36.8 37 30.6 37C28 37 25.7 36 24.3 34.3V50Z M24.3 25.8C24.3 29.9 27 32.8 30.7 32.8C34.5 32.8 37.1 29.9 37.1 25.8C37.1 21.7 34.5 18.7 30.7 18.7C27 18.7 24.3 21.7 24.3 25.8Z" fill="#F4EFE4" fill-rule="evenodd"/>
+  <circle cx="47" cy="15" r="5" fill="#C8F03C"/>
 </svg>

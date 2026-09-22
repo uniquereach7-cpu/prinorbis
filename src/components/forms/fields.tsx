@@ -1,26 +1,15 @@
 import { ChevronDown } from "lucide-react";
 
 export const inputClass =
-  "w-full rounded-[var(--radius-md)] border border-line-strong/60 bg-paper-raised px-4 py-3 text-[15px] text-ink placeholder:text-ink-muted/60 transition-colors hover:border-line-strong focus:border-blue focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue";
+  "w-full rounded-[var(--radius-md)] border border-ink/20 bg-bone-raised px-4 py-3.5 text-[15px] text-ink placeholder:text-ink-muted/60 transition-colors hover:border-ink/40 focus:border-forest focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest";
 
-export function Field({
-  label,
-  htmlFor,
-  children,
-  hint,
-}: {
-  label: string;
-  htmlFor: string;
-  children: React.ReactNode;
-  hint?: string;
-}) {
+export function Field({ label, htmlFor, children }: { label: string; htmlFor: string; children: React.ReactNode }) {
   return (
     <div>
-      <label htmlFor={htmlFor} className="telemetry mb-2 block text-ink-muted">
+      <label htmlFor={htmlFor} className="telemetry mb-2.5 block text-ink-muted">
         {label}
       </label>
       {children}
-      {hint && <p className="mt-1.5 text-[13px] text-ink-muted">{hint}</p>}
     </div>
   );
 }
@@ -40,24 +29,14 @@ export function Select({
 }) {
   return (
     <div className="relative">
-      <select
-        id={id}
-        name={name}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className={`${inputClass} appearance-none pr-10`}
-      >
+      <select id={id} name={name} value={value} onChange={(e) => onChange(e.target.value)} className={`${inputClass} appearance-none pr-10`}>
         {options.map((o) => (
           <option key={o.value} value={o.value}>
             {o.label}
           </option>
         ))}
       </select>
-      <ChevronDown
-        className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-ink-muted"
-        strokeWidth={1.75}
-        aria-hidden
-      />
+      <ChevronDown className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 text-ink-muted" strokeWidth={1.75} aria-hidden />
     </div>
   );
 }

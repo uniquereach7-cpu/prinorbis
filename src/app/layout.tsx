@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Bricolage_Grotesque, Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { ChapterProvider } from "@/components/layout/ChapterProvider";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { TrajectoryRail } from "@/components/layout/TrajectoryRail";
+import { GrowthRail } from "@/components/layout/GrowthRail";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const display = Plus_Jakarta_Sans({
-  variable: "--font-display-face",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
+  axes: ["opsz"],
+});
+
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 const geist = Geist({
@@ -38,20 +47,26 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${display.variable} ${geist.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${bricolage.variable} ${instrument.variable} ${geist.variable} ${geistMono.variable}`}
+    >
       <body className="min-h-dvh">
         <a
           href="#main"
-          className="sr-only z-[100] rounded-md bg-blue px-4 py-2 text-paper focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+          className="sr-only z-[100] rounded-full bg-forest px-4 py-2 text-bone focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
         >
           Skip to content
         </a>
-        <ChapterProvider>
-          <Header />
-          <TrajectoryRail />
-          <main id="main">{children}</main>
-          <Footer />
-        </ChapterProvider>
+        <SmoothScroll>
+          <ChapterProvider>
+            <Header />
+            <GrowthRail />
+            <main id="main">{children}</main>
+            <Footer />
+          </ChapterProvider>
+        </SmoothScroll>
+        <div className="grain" aria-hidden />
       </body>
     </html>
   );
