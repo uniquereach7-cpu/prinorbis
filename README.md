@@ -28,7 +28,7 @@ brings the heat: signal lime on forest, flare on bone.
 |---|---|---|
 | Home hero, Services hero | A root network grows live from a glowing seed, then lime pulses flow to the tips; tips brighten near the cursor | Space colonization on canvas (`living/colony.ts`, `living/GrowthCanvas.tsx`) |
 | Home, the path | Pinned section: one plant grows seed, roots, underground network, canopy as you scroll | GSAP ScrollTrigger + DrawSVG (`home/PathGrowth.tsx`, `living/plant.ts`) |
-| Agents | Cells that breathe, joined by mycelium threads carrying handoff pulses | GSAP MorphSVG + MotionPath (`living/Cell.tsx`, `living/Mycelium.tsx`) |
+| Agents | Cells that breathe, joined by mycelium threads carrying handoff pulses | Amoeba outlines recomputed each frame + GSAP MotionPath (`living/Cell.tsx`, `living/Mycelium.tsx`) |
 | Industries | Growth rings draw outward; each industry sits on a ring | DrawSVG, scrubbed (`living/TreeRings.tsx`) |
 | Agentic CFO | Five agent cells and your team around the ledger | `cfo/CfoColony.tsx` |
 | About | Orbis: a globe with root veins and pulses, turning toward the pointer | three.js, lazy-loaded (`living/Globe.tsx`) |

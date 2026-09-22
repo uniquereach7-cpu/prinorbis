@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, MOTION_OK } from "@/lib/gsap";
-import { blob, thread } from "@/components/living/geometry";
+import { amoeba, thread } from "@/components/living/geometry";
+import { useAmoeba } from "@/components/living/useAmoeba";
 import { cfoSuite } from "@/content/site";
 
 /*
@@ -20,6 +21,7 @@ const pos = members.map((_, i) => {
 
 export function CfoColony() {
   const ref = useRef<SVGSVGElement>(null);
+  useAmoeba(ref);
 
   useGSAP(
     () => {
@@ -31,9 +33,6 @@ export function CfoColony() {
         tl.from(q("[data-spoke]"), { drawSVG: "0%", duration: 0.8, stagger: 0.06, ease: "power2.out" }, "-=0.4");
         tl.from(q("[data-member]"), { scale: 0, opacity: 0, transformOrigin: "50% 50%", transformBox: "fill-box", duration: 0.7, stagger: 0.08, ease: "back.out(1.8)" }, "-=0.6");
         tl.from(q("[data-ring]"), { drawSVG: "0%", duration: 1.2, ease: "power2.inOut" }, "-=0.5");
-        q("[data-cell]").forEach((el, i) => {
-          gsap.to(el, { morphSVG: el.getAttribute("data-alt")!, duration: 4 + (i % 3), yoyo: true, repeat: -1, ease: "sine.inOut" });
-        });
         q("[data-pulse]").forEach((dot, i) => {
           const path = q("[data-ring]")[0] as unknown as SVGPathElement;
           gsap.to(dot, {
@@ -72,7 +71,7 @@ export function CfoColony() {
 
       <g data-core>
         <circle cx={C} cy={C} r={80} fill="url(#cfo-core)" />
-        <path data-cell d={blob(C, C, 46, 3, 0.14)} data-alt={blob(C, C, 46, 53, 0.14)} fill="#16432f" stroke="#8fae96" strokeOpacity="0.5" />
+        <path data-amoeba data-cx={C} data-cy={C} data-r={46} data-seed={3} data-amp={0.1} data-speed={0.8} d={amoeba(C, C, 46, 3, 0, 0.1)} fill="#16432f" stroke="#8fae96" strokeOpacity="0.5" />
         <circle cx={C} cy={C} r={11} fill="#c8f03c" className="pulse-ring" />
         <circle cx={C} cy={C} r={11} fill="#c8f03c" />
         <text x={C} y={C + 32} textAnchor="middle" fill="#f4efe4" fillOpacity="0.6" style={{ font: "500 10px var(--font-mono)", letterSpacing: "0.14em" }}>
@@ -90,9 +89,14 @@ export function CfoColony() {
         return (
           <g key={m.id} data-member>
             <path
-              data-cell
-              d={blob(x, y, 36, 20 + i, 0.16)}
-              data-alt={blob(x, y, 36, 70 + i, 0.16)}
+              data-amoeba
+              data-cx={x}
+              data-cy={y}
+              data-r={36}
+              data-seed={20 + i}
+              data-amp={0.12}
+              data-speed={0.9 + (i % 3) * 0.15}
+              d={amoeba(x, y, 36, 20 + i, 0, 0.12)}
               fill={m.team ? "#f4efe4" : "#10301f"}
               stroke="#8fae96"
               strokeOpacity={m.team ? 0 : 0.6}

@@ -40,7 +40,12 @@ export function PathGrowth() {
         levels.forEach(([, els], i) => {
           tl.to(els, { drawSVG: "100%", duration: step * 1.4, ease: "none" }, at + i * step);
         });
-        tl.to(q(`[data-g="${group}"] [data-pop]`), { scale: 1, opacity: 1, duration: span * 0.4, stagger: span * 0.02, ease: "back.out(2)" }, at + span * 0.55);
+        // A fixed total stagger, so a canopy with a hundred leaves finishes as fast as a seed with one.
+        tl.to(
+          q(`[data-g="${group}"] [data-pop]`),
+          { scale: 1, opacity: 1, duration: span * 0.25, stagger: { amount: span * 0.3 }, ease: "back.out(2)" },
+          at + span * 0.45,
+        );
       };
 
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
@@ -55,7 +60,7 @@ export function PathGrowth() {
           scrollTrigger: {
             trigger: q("[data-pin]")[0],
             start: "top top",
-            end: "+=3600",
+            end: "+=2800",
             pin: true,
             scrub: 0.8,
             onUpdate: (self) => {
@@ -67,21 +72,21 @@ export function PathGrowth() {
 
         ORDER.forEach((g, i) => {
           const at = i;
-          growGroup(tl, g, at + 0.05, 0.75);
+          growGroup(tl, g, at + 0.04, 0.6);
           tl.to(q(`[data-bar="${i}"]`), { scaleX: 1, duration: 1 }, at);
           if (i > 0) {
             tl.to(q(`[data-stage="${i - 1}"]`), { autoAlpha: 0, y: -40, duration: 0.18 }, at - 0.08);
             tl.to(q(`[data-stage="${i}"]`), { autoAlpha: 1, y: 0, duration: 0.2 }, at + 0.06);
           }
         });
-        tl.to({}, { duration: 0.25 });
+        tl.to({}, { duration: 0.12 });
       });
 
       mm.add("(max-width: 1023px) and (prefers-reduced-motion: no-preference)", () => {
         gsap.set(q("[data-draw]"), { drawSVG: "0%" });
         gsap.set(q("[data-pop]"), { scale: 0, opacity: 0, transformOrigin: "50% 50%", transformBox: "fill-box" });
         const tl = gsap.timeline({ scrollTrigger: { trigger: q("[data-plant]")[0], start: "top 75%", once: true } });
-        ORDER.forEach((g, i) => growGroup(tl, g, i * 0.5, 0.6));
+        ORDER.forEach((g, i) => growGroup(tl, g, i * 0.45, 0.5));
       });
 
       return () => mm.revert();

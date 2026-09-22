@@ -71,7 +71,7 @@ export function branches(opts: BranchOptions): Segment[] {
 }
 
 /** Catmull-Rom through closed points, returned as a cubic Bezier path. */
-function closedSpline(pts: [number, number][]) {
+export function closedSpline(pts: [number, number][]) {
   const n = pts.length;
   let d = `M${round(pts[0][0])} ${round(pts[0][1])}`;
   for (let i = 0; i < n; i++) {
@@ -95,6 +95,32 @@ export function blob(cx: number, cy: number, r: number, seed: number, wobble = 0
   for (let i = 0; i < points; i++) {
     const a = (i / points) * Math.PI * 2;
     const rr = r * (1 + range(rng, -wobble, wobble));
+    pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
+  }
+  return closedSpline(pts);
+}
+
+/**
+ * A living outline at time t (seconds): every point breathes on its own
+ * rhythm, and two waves travel around the rim so bulges move like an amoeba
+ * reaching out. At t = 0 it is a stable shape, safe to render on the server.
+ */
+export function amoeba(cx: number, cy: number, r: number, seed: number, t: number, amp = 0.08, points = 12) {
+  const rng = mulberry32(seed);
+  const pts: [number, number][] = [];
+  const waveA = range(rng, 0, Math.PI * 2);
+  const waveB = range(rng, 0, Math.PI * 2);
+  for (let i = 0; i < points; i++) {
+    const a = (i / points) * Math.PI * 2;
+    const base = range(rng, -0.35, 0.35);
+    const f = range(rng, 0.6, 1.3);
+    const p = range(rng, 0, Math.PI * 2);
+    const n =
+      base * 0.5 +
+      Math.sin(t * f + p) * 0.45 +
+      Math.sin(a * 2 - t * 0.9 + waveA) * 0.55 +
+      Math.sin(a * 3 + t * 0.6 + waveB) * 0.35;
+    const rr = r * (1 + n * amp);
     pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
   }
   return closedSpline(pts);

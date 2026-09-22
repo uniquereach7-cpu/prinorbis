@@ -31,7 +31,7 @@ export function Industries() {
             {industries.map((ind, i) => {
               const on = i === selected;
               return (
-                <li key={ind.slug} className="border-b border-bone/10" onMouseEnter={() => setSelected(i)}>
+                <li key={ind.slug} className="border-b border-bone/10" onClick={() => setSelected(i)}>
                   <button
                     type="button"
                     onClick={() => setSelected(i)}
